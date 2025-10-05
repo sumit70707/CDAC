@@ -1,0 +1,87 @@
+package com.hdfc.core;
+
+import com.hdfc.ExeptionHandling.BankException;
+
+public class BankAccount {
+	private  int actNum;
+	private   double balance;
+	private   String custName;
+	private   String phoneNum;
+	private AccountType actType;
+
+	public BankAccount(int actNum , double balance , String custName , String phoneNum,AccountType actType){
+		this.actNum = actNum ;
+		this.balance = balance;
+		this.custName = custName;
+		this.phoneNum = phoneNum;
+		this.actType=actType;
+	}
+
+	public BankAccount(int actNum){
+		this.actNum = actNum ;
+	}// check this
+	public  void deposit(double amount) {
+
+		this.balance += amount;
+		System.out.println("Amount Added to Your Account :"+amount+
+				"\n Current Balance :"+this.balance);
+	}
+
+	public String withdraw(int actNum,double amount) throws BankException
+	{
+		//		if(this.balance > amount) {
+		//			if(this.balance - amount<=500) {
+		//				return "Can't Process The Transaction Amount<500";
+		//			}
+		//			this.balance -= amount;
+		//			return "amount withdraw:"+amount+" Remaining Balance:"+balance;
+		//		}
+		return "Withdraw From BankAccount";
+	}
+
+	public String getAccountSummary(){
+        return "Customer Account Number: " + actNum +
+               "\nCustomer Name: " + custName +
+               "\nCurrent Balance: " + balance +
+               "\nPhone Number: " + phoneNum;
+    }
+
+	public  double getBalance() {
+		return balance;
+	}
+
+	public   void setBalance(double amt) {
+		this.balance=amt; 
+	}
+
+	public  int getactNum() {
+		return actNum;
+	}
+
+	public String getcustName() {
+		return custName;
+	}
+
+	public String getphoneNum() {
+		return phoneNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Account Number : "+actNum+" Account Balance : "+balance+" Customer Name : "
+				+custName+" Phone Number : "+phoneNum+" Account Type : "+actType;
+
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		if(obj instanceof BankAccount) {
+			return this.actNum==((BankAccount)obj).actNum;
+		}
+		return false;
+	}
+
+}
+
+
+
